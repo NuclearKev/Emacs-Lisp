@@ -1,7 +1,7 @@
 ;; This file is Free Software under the GNU GPLv3.
 
 ;; One day this will contain a bunch of fun Elisp functions that might help
-;; some sad sack someday. Enjoy.
+;; some sad sack, someday. Enjoy.
 
 (defun replace-a-word (org-word new-word)
   "Replace a word with a different one!"
