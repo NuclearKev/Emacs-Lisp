@@ -14,3 +14,12 @@
     (if found-flag
 	(message "Replaced!")
       (message "The word %s wasn't found!" org-word))))
+
+;; This will kill the current buffer and delete the window so if you have 
+;; multiple windows open, it will remove the killed window's window
+(defun kill-and-delete-window ()
+	(interactive)
+	(kill-buffer)
+	(if (equal 1 (length (window-list)))
+	    nil
+          (delete-window)))
