@@ -12,7 +12,7 @@
       (setq found-flag t)		;not very good practice..
       (replace-match new-word))
     (if found-flag
-	(message "Replaced!")
+				(message "Replaced!")
       (message "The word %s wasn't found!" org-word))))
 
 ;; This will kill the current buffer and delete the window so if you have
@@ -22,12 +22,13 @@
 	(kill-buffer)
 	(if (equal 1 (length (window-list)))
 	    nil
-          (delete-window)))
+		(delete-window)))
 
 
 ;;; I got tired of typing out the long commands for youtube-dl.
+;;; BUG: Can't use async-shell-command due to the parens
+
 (setq youtube-dl-dir "~/Downloads/") ;make sure to have the '/' at the end
-"~/Downloads/"
 
 (defun youtube-dl-video (url)
 	"Easily download youtube videos in Emacs!
@@ -37,8 +38,8 @@ Pass it the URL of the video you wish to download.  Then it will
 	to an eshell buffer or something."
 	(interactive "sURL: ")
 	(kill-append (concat "youtube-dl --output " youtube-dl-dir
-															 "\%\(title\)s.\%\(ext\)s ")
-															 t))
+											 "\%\(title\)s.\%\(ext\)s ")
+							 t))
 
 (defun youtube-dl-ogg (url)
 	"Easily download youtube videos in Emacs!
