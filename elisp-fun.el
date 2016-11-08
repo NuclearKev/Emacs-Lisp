@@ -15,7 +15,7 @@
 	(message "Replaced!")
       (message "The word %s wasn't found!" org-word))))
 
-;; This will kill the current buffer and delete the window so if you have 
+;; This will kill the current buffer and delete the window so if you have
 ;; multiple windows open, it will remove the killed window's window
 (defun kill-and-delete-window ()
 	(interactive)
@@ -23,3 +23,33 @@
 	(if (equal 1 (length (window-list)))
 	    nil
           (delete-window)))
+
+
+;;; I got tired of typing out the long commands for youtube-dl.
+(setq youtube-dl-dir "~/Downloads/") ;make sure to have the '/' at the end
+"~/Downloads/"
+
+(defun youtube-dl-video (url)
+	"Easily download youtube videos in Emacs!
+
+Pass it the URL of the video you wish to download.  Then it will
+	place the full youtube-dl command in your kill ring.  Yank this
+	to an eshell buffer or something."
+	(interactive "sURL: ")
+	(kill-append (concat "youtube-dl --output " youtube-dl-dir
+															 "\%\(title\)s.\%\(ext\)s ")
+															 t))
+
+(defun youtube-dl-ogg (url)
+	"Easily download youtube videos in Emacs!
+
+Pass it the URL of the video you wish to convert to ogg and
+	download.  Then it will place the full youtube-dl command in
+	your kill ring.  Yank this to an eshell buffer or something."
+	(interactive "sURL: ")
+	(kill-append (concat "youtube-dl -x --audio-format vorbis "
+											 "--output " youtube-dl-dir
+											 "\%\(title\)s.\%\(ext\)s ")
+							 t))
+
+;;; elisp-fun.el ends here
