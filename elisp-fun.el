@@ -53,4 +53,9 @@ Pass it the URL of the video you wish to convert to ogg and
 											 "\%\(title\)s.\%\(ext\)s ")
 							 t))
 
+(defun screen-shot (delay-time)
+	(interactive "sDelay Time:")
+	(shell-command (concat "scrot -d " delay-time))
+	(shell-command (concat "mv *_scrot.png ~/Desktop/")))
+
 ;;; elisp-fun.el ends here
